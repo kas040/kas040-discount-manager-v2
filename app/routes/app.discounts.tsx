@@ -1,5 +1,6 @@
 import { json, type LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { format } from "date-fns";
 import {
   Page,
   Layout,
@@ -45,6 +46,8 @@ export default function DiscountsPage() {
     )
     .map(discount => [
       discount.name,
+      format(new Date(discount.startDate), 'dd/MM/yyyy'),
+      discount.endDate ? format(new Date(discount.endDate), 'dd/MM/yyyy') : '-',
       discount.type === 'percentage' ? `${discount.value}%` : `$${discount.value}`,
       discount.productCount,
       `$${discount.totalDiscount.toFixed(2)}`,
@@ -93,6 +96,8 @@ export default function DiscountsPage() {
                     columnContentTypes={[
                       "text",
                       "text",
+                      "text",
+                      "text",
                       "numeric",
                       "numeric",
                       "text",
@@ -100,6 +105,8 @@ export default function DiscountsPage() {
                     ]}
                     headings={[
                       "Name",
+                      "Start Date",
+                      "End Date",
                       "Discount",
                       "Products",
                       "Total Savings",
