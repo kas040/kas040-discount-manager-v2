@@ -2,6 +2,7 @@ import { vitePlugin as remix } from "@remix-run/dev";
 import { installGlobals } from "@remix-run/node";
 import { defineConfig, type UserConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { netlifyPlugin } from "@netlify/remix-adapter/plugin";
 
 installGlobals({ nativeFetch: true });
 
@@ -45,22 +46,10 @@ export default defineConfig({
     },
   },
   plugins: [
-    remix({
-      ignoredRouteFiles: ["**/.*"],
-      future: {
-        v3_fetcherPersist: true,
-        v3_relativeSplatPath: true,
-        v3_throwAbortReason: true,
-        v3_lazyRouteDiscovery: true,
-        v3_singleFetch: false,
-        v3_routeConfig: true,
-      },
-    }),
+    remix(),
     tsconfigPaths(),
+    netlifyPlugin(), // ← Updated Netlify adapter
   ],
-  ssr: {
-    noExternal: ["@shopify/app-bridge-react", "@shopify/shopify-app-remix"],
-  },
   build: {
     assetsInlineLimit: 0,
   },
