@@ -13,6 +13,7 @@ import {
   Link,
   InlineStack,
 } from "@shopify/polaris";
+import { TitleBar } from "@shopify/app-bridge-react";
 import { useNavigate } from "@remix-run/react";
 import { authenticate } from "../shopify.server";
 
@@ -112,6 +113,13 @@ export default function Index() {
 
   return (
     <Page>
+      <TitleBar
+        title="Home"
+        primaryAction={{
+          content: 'Discounts',
+          onAction: () => navigate('/app/discounts'),
+        }}
+      />
       <BlockStack gap="500">
         <Layout>
           <Layout.Section>

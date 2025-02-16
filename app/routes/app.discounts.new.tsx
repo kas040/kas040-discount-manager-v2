@@ -13,6 +13,7 @@ import {
   Text,
   Banner,
 } from "@shopify/polaris";
+import { TitleBar } from "@shopify/app-bridge-react";
 import { useState } from "react";
 import { authenticate } from "../shopify.server";
 import { createDiscountRule } from "../services/discount.server";
@@ -53,9 +54,15 @@ export default function NewDiscountPage() {
 
   return (
     <Page
-      title="Create New Discount"
       backAction={{ content: "Discounts", url: "/app/discounts" }}
     >
+      <TitleBar
+        title="Create New Discount"
+        primaryAction={{
+          content: 'Back to Discounts',
+          onAction: () => window.location.href = '/app/discounts',
+        }}
+      />
       <BlockStack gap="500">
         <Layout>
           <Layout.Section>

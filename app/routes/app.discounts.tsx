@@ -14,6 +14,7 @@ import {
   Select,
   TextField,
 } from "@shopify/polaris";
+import { TitleBar } from "@shopify/app-bridge-react";
 import { useState } from "react";
 import { authenticate } from "../shopify.server";
 import { getDiscountViews } from "../services/discount.server";
@@ -64,13 +65,19 @@ export default function DiscountsPage() {
 
   return (
     <Page
-      title="Discount Manager"
       primaryAction={
         <Button variant="primary" url="/app/discounts/new">
           Create discount
         </Button>
       }
     >
+      <TitleBar
+        title="Discount Manager"
+        primaryAction={{
+          content: 'Create Discount',
+          onAction: () => window.location.href = '/app/discounts/new',
+        }}
+      />
       <BlockStack gap="500">
         <Layout>
           <Layout.Section>
