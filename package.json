@@ -19,6 +19,7 @@
     "@remix-run/dev": "^2.15.0",
     "@remix-run/fs-routes": "^2.15.0",
     "@remix-run/serve": "^2.15.0",
+    "@shopify/app-bridge": "^3.7.10",
     "@shopify/app-bridge-react": "^4.1.6",
     "@shopify/polaris": "^12.0.0",
     "@shopify/remix-oxygen": "^2.0.0",
@@ -52,5 +53,10 @@
   "overrides": {
     "@graphql-tools/url-loader": "8.0.16"
   },
-  "author": "info"
+  "author": "info",
+  "description": "This is a template for building a [Shopify app](https://shopify.dev/docs/apps/getting-started) using the [Remix](https://remix.run) framework.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "license": "ISC"
 }
