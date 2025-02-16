@@ -3,6 +3,7 @@
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "strict": true,
+    "types": ["node", "@shopify/app-bridge-types"],
     "skipLibCheck": true,
     "isolatedModules": true,
     "allowSyntheticDefaultImports": true,
@@ -15,7 +16,6 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "target": "ES2022",
-    "baseUrl": ".",
-    "types": ["node"]
+    "baseUrl": "."
   }
 }
