@@ -1,8 +1,7 @@
 import type { HeadersFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { Outlet, useLoaderData, useRouteError } from "@remix-run/react";
 import { boundary } from "@shopify/shopify-app-remix/server";
-import { AppProvider } from "@shopify/shopify-app-remix/react";
-import { NavigationMenu } from "@shopify/app-bridge-react";
+import { AppProvider, NavigationMenu } from "@shopify/app-bridge-react";
 import polarisStyles from "@shopify/polaris/build/esm/styles.css?url";
 
 import { authenticate } from "../shopify.server";
@@ -18,24 +17,24 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 export default function App() {
   const { apiKey } = useLoaderData<typeof loader>();
 
-  const pages = [
+  const primaryActions = [
     {
-      label: "Home",
-      destination: "/app",
+      label: 'Home',
+      destination: '/app',
     },
     {
-      label: "Discounts",
-      destination: "/app/discounts",
+      label: 'Discounts',
+      destination: '/app/discounts',
     },
     {
-      label: "Additional page",
-      destination: "/app/additional",
+      label: 'Additional page',
+      destination: '/app/additional',
     },
   ];
 
   return (
     <AppProvider isEmbeddedApp apiKey={apiKey}>
-      <NavigationMenu navigationLinks={pages} />
+      <NavigationMenu primaryActions={primaryActions} />
       <Outlet />
     </AppProvider>
   );

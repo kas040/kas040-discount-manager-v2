@@ -13,7 +13,7 @@ import {
   Link,
   InlineStack,
 } from "@shopify/polaris";
-import { useAppBridge } from "@shopify/app-bridge-react";
+import { useNavigate } from "@remix-run/react";
 import { authenticate } from "../shopify.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -93,8 +93,8 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 
 export default function Index() {
   const fetcher = useFetcher<typeof action>();
+  const navigate = useNavigate();
 
-  const shopify = useAppBridge();
   const isLoading =
     ["loading", "submitting"].includes(fetcher.state) &&
     fetcher.formMethod === "POST";
@@ -105,9 +105,9 @@ export default function Index() {
 
   useEffect(() => {
     if (productId) {
-      shopify.toast.show("Product created");
+      navigate(`/app/products/${productId}`);
     }
-  }, [productId, shopify]);
+  }, [productId, navigate]);
   const generateProduct = () => fetcher.submit({}, { method: "POST" });
 
   return (

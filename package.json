@@ -17,8 +17,7 @@
   "dependencies": {
     "@remix-run/dev": "^2.15.0",
     "@remix-run/fs-routes": "^2.15.0",
-    "@remix-run/node": "^2.15.0",
-    "@remix-run/react": "^2.15.0",
+    "@shopify/remix-oxygen": "^2.0.0",
     "@remix-run/serve": "^2.15.0",
     "@shopify/app-bridge-react": "^4.1.6",
     "@shopify/polaris": "^12.0.0",
