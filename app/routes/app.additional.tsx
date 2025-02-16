@@ -8,10 +8,18 @@ import {
   Text,
   BlockStack,
 } from "@shopify/polaris";
+import { TitleBar } from "@shopify/app-bridge-react";
 
 export default function AdditionalPage() {
   return (
     <Page>
+      <TitleBar
+        title="Additional Page"
+        primaryAction={{
+          content: 'Home',
+          onAction: () => window.location.href = '/app',
+        }}
+      />
       <Layout>
         <Layout.Section>
           <Card>
